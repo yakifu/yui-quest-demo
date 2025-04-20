@@ -7,7 +7,7 @@ let currentStage = 0;
 
 const dialogue = [
   {
-    question: "こんにちは。今日はどんな気分？",
+    question: "",
     options: [
       {
         text: "ちょっとモヤモヤしてる",
@@ -79,10 +79,12 @@ const dialogue = [
 
 function showQuestion(stage) {
   const data = dialogue[stage];
-  const questionBubble = document.createElement("div");
-  questionBubble.className = "nono-bubble";
-  questionBubble.textContent = data.question;
-  chatLog.appendChild(questionBubble);
+  if (data.question) {
+    const questionBubble = document.createElement("div");
+    questionBubble.className = "nono-bubble";
+    questionBubble.textContent = data.question;
+    chatLog.appendChild(questionBubble);
+  }
   choices.innerHTML = "";
   data.options.forEach((opt, i) => {
     const btn = document.createElement("button");
