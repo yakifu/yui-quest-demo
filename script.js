@@ -1,5 +1,7 @@
+
 const chatLog = document.getElementById("chat-log");
 const choices = document.getElementById("choices");
+const avatar = document.getElementById("nono-avatar");
 
 let currentStage = 0;
 
@@ -10,17 +12,20 @@ const dialogue = [
       {
         text: "ちょっとモヤモヤしてる",
         reply: "そっか、気持ちがモヤモヤするときって、体も疲れてるのかもね。",
-        hint: "🌱学びポイント：自分の感情に名前をつけてみると、少し楽になることがあるよ。"
+        hint: "🌱学びポイント：自分の感情に名前をつけてみると、少し楽になることがあるよ。",
+        image: "nono_sad.png"
       },
       {
         text: "まあまあ元気",
         reply: "いいね、元気なときって、誰かにその気持ちを分けてあげたくなるね。",
-        hint: "🌱学びポイント：調子が良いときほど、ちょっとした支援が自然にできたりするんだ。"
+        hint: "🌱学びポイント：調子が良いときほど、ちょっとした支援が自然にできたりするんだ。",
+        image: "nono_happy.png"
       },
       {
         text: "話す気分じゃないかも",
         reply: "無理に話さなくて大丈夫だよ。ここは、ただ寄り添う場所だから。",
-        hint: "🌱学びポイント：話さないという選択も、立派な自己決定のひとつなんだよ。"
+        hint: "🌱学びポイント：話さないという選択も、立派な自己決定のひとつなんだよ。",
+        image: "nono_empathy.png"
       }
     ]
   },
@@ -30,17 +35,20 @@ const dialogue = [
       {
         text: "うまく言えないけど、ある",
         reply: "うまく言えないことも、まずは心にあるって気づけることが大事だよ。",
-        hint: "🌱学びポイント：言葉にできない気持ちも、大切にしてみてね。"
+        hint: "🌱学びポイント：言葉にできない気持ちも、大切にしてみてね。",
+        image: "nono_empathy.png"
       },
       {
         text: "とくにはないかな",
         reply: "それもいいね。今をそのまま感じているのも、健やかなことだよ。",
-        hint: "🌱学びポイント：無理に探さなくてもいい、自分の今に耳をすませてみよう。"
+        hint: "🌱学びポイント：無理に探さなくてもいい、自分の今に耳をすませてみよう。",
+        image: "nono_happy.png"
       },
       {
         text: "自分のことより他の人のことが気になる",
         reply: "優しいね。でも自分のことを後回しにしすぎないようにね。",
-        hint: "🌱学びポイント：誰かを大切にするには、まず自分を大切にしていいんだよ。"
+        hint: "🌱学びポイント：誰かを大切にするには、まず自分を大切にしていいんだよ。",
+        image: "nono_empathy.png"
       }
     ]
   },
@@ -50,17 +58,20 @@ const dialogue = [
       {
         text: "家族との時間かな",
         reply: "うん、きっとその時間は、あとから思い出しても心をあたためてくれるよ。",
-        hint: "🌱学びポイント：大切な時間は、日常のなかにあるかもしれないね。"
+        hint: "🌱学びポイント：大切な時間は、日常のなかにあるかもしれないね。",
+        image: "nono_empathy.png"
       },
       {
         text: "自分の心の安定かな",
         reply: "それはすごく大事なことだよ。どんなときも、心は一緒に生きていくからね。",
-        hint: "🌱学びポイント：心のケアは、自分を守る力になるんだ。"
+        hint: "🌱学びポイント：心のケアは、自分を守る力になるんだ。",
+        image: "nono_empathy.png"
       },
       {
         text: "正直、まだ見つかってない",
         reply: "それもいいよ。ゆっくり探していけばいいし、ここで考える時間も大切だよ。",
-        hint: "🌱学びポイント：見つからないという状態も、学びのはじまりなんだ。"
+        hint: "🌱学びポイント：見つからないという状態も、学びのはじまりなんだ。",
+        image: "nono_cry.png"
       }
     ]
   }
@@ -99,6 +110,10 @@ function selectOption(index) {
   hint.className = "nono-bubble";
   hint.textContent = selected.hint;
   chatLog.appendChild(hint);
+
+  if (selected.image) {
+    avatar.src = selected.image;
+  }
 
   choices.style.display = "none";
 
