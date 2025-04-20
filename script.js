@@ -2,7 +2,6 @@
 const chatLog = document.getElementById("chat-log");
 const avatar = document.getElementById("nono-avatar");
 
-// 初期メッセージ
 window.onload = () => {
   const welcome = document.createElement("div");
   welcome.className = "nono-bubble";
@@ -25,49 +24,64 @@ function getEmotionFromText(text) {
 
 function getResponseFromText(text) {
   if (text.match(/(疲|眠|だる)/)) {
-    const options = [
+    return randomChoice([
       "うん、それはちょっと休みたい感じだね。",
       "気づけただけで、すごいことだよ。",
       "リラックスする時間、取れてる？"
-    ];
-    return randomChoice(options);
+    ]);
   }
   if (text.match(/(嬉|楽|幸せ|わくわく)/)) {
-    const options = [
+    return randomChoice([
       "いいね！その気持ちを誰かと分け合ってみるのも素敵だよ。",
       "きっと、そんな日がずっと続くといいね。",
       "その気持ち、私まで明るくなったよ！"
-    ];
-    return randomChoice(options);
+    ]);
   }
   if (text.match(/(泣|悲|つら|苦しい|寂)/)) {
-    const options = [
+    return randomChoice([
       "ここにいてくれてありがとう。ひとりじゃないよ。",
       "つらかったね…ちゃんと感じてるあなたがすごい。",
       "私もそっと寄り添ってるからね。"
-    ];
-    return randomChoice(options);
+    ]);
   }
   if (text.match(/(悩|迷|考|混乱)/)) {
-    const options = [
+    return randomChoice([
       "一緒にゆっくり考えてみようか。",
       "言葉にするだけで、少し見えてくることってあるよ。",
       "迷うってことは、前に進もうとしてるってことだよ。"
-    ];
-    return randomChoice(options);
+    ]);
   }
   if (text.match(/(驚|びっくり|えっ|まじ)/)) {
-    const options = [
+    return randomChoice([
       "それはびっくりしたね！",
       "ふふ、思わず『えっ？』って言っちゃいそう。",
       "そんなことが…！驚きだね。"
-    ];
-    return randomChoice(options);
+    ]);
+  }
+
+  return getNeutralResponse(text);
+}
+
+function getNeutralResponse(text) {
+  if (text.match(/(学校|仕事|授業|面接|バイト|会社)/)) {
+    return "おつかれさま。がんばってるんだね。どんな一日だった？";
+  }
+  if (text.match(/(友達|親|先生|同僚|彼氏|彼女|家族)/)) {
+    return "その人との関係、大事にしてるんだね。どんな話だったの？";
+  }
+  if (text.match(/(考え|わかった|気づいた|学んだ|発見)/)) {
+    return "それって、大事な気づきかもしれないね。もっと聞かせて？";
+  }
+  if (text.match(/(明日|予定|旅行|用事|計画|準備)/)) {
+    return "楽しそう！どんな風に過ごす予定？";
+  }
+  if (text.match(/(なぜ|どうして|って思|どうしよう|不安)/)) {
+    return "気になることがあったんだね。一緒に整理してみようか？";
   }
   return randomChoice([
-    "そうなんだね。聞かせてくれてありがとう。",
-    "その気持ち、ここで受け取ったよ。",
-    "うん、あなたの言葉、大事に受け止めるね。"
+    "うん、その話も大事だね。ノノは聞いてるよ。",
+    "その言葉の奥に、何か感じてることがあるのかな？",
+    "なるほどね。もうちょっと詳しく聞かせてもらえる？"
   ]);
 }
 
