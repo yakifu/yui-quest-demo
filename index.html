@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ノノ先生と話してみよう</title>
+  <title>ノノ先生と話してみよう（自由記述版）</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,13 +10,10 @@
     <div class="character">
       <img src="nono.png" alt="ノノ先生" id="nono-avatar">
     </div>
-    <div id="chat-log">
-      <div class="nono-bubble">こんにちは。今日はどんな気分？</div>
-    </div>
-    <div id="choices">
-      <button onclick="selectOption(0)">ちょっとモヤモヤしてる</button>
-      <button onclick="selectOption(1)">まあまあ元気</button>
-      <button onclick="selectOption(2)">話す気分じゃないかも</button>
+    <div id="chat-log"></div>
+    <div id="input-area">
+      <input type="text" id="user-input" placeholder="ここに気持ちを書いてね">
+      <button onclick="handleFreeInput()">送信</button>
     </div>
   </div>
   <script src="script.js"></script>
