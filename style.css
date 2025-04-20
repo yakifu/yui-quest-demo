@@ -1,0 +1,60 @@
+body {
+  font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  background-color: #fdfaf4;
+  margin: 0;
+  padding: 20px;
+}
+
+#chat-container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.character img {
+  width: 120px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.nono-bubble, .user-bubble {
+  background: #e6f0ff;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0;
+  max-width: 80%;
+}
+
+.user-bubble {
+  background: #fce4ec;
+  align-self: flex-end;
+}
+
+#chat-log {
+  display: flex;
+  flex-direction: column;
+}
+
+#choices {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8ecae6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #219ebc;
+}

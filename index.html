@@ -2,89 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ノノ先生と話してみよう</title>
-  <style>
-    body {
-      font-family: "Yu Gothic", sans-serif;
-      background-color: #fffef6;
-      color: #333;
-      padding: 2rem;
-      max-width: 500px;
-      margin: auto;
-    }
-    .character {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .character img {
-      width: 150px;
-    }
-    .speech {
-      font-size: 1.1rem;
-      background: #f0f0ff;
-      padding: 1rem;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-    .choices button {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      border: none;
-      background-color: #cce5ff;
-      cursor: pointer;
-    }
-    .reaction {
-      background-color: #fff6e5;
-      border-left: 4px solid #ffc107;
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: 0.5rem;
-    }
-    .badge {
-      text-align: center;
-      margin-top: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="character">
-    <img src="https://raw.githubusercontent.com/yakifu/yui-quest-demo/main/nono.png" alt="ノノ先生">
-    <div class="speech">こんにちは ☀️ きょうのあなたの気持ち、ひとことで教えてもらえますか？</div>
+  <div id="chat-container">
+    <div class="character">
+      <img src="nono.png" alt="ノノ先生" id="nono-avatar">
+    </div>
+    <div id="chat-log">
+      <div class="nono-bubble">こんにちは。今日はどんな気分？</div>
+    </div>
+    <div id="choices">
+      <button onclick="selectOption(0)">ちょっとモヤモヤしてる</button>
+      <button onclick="selectOption(1)">まあまあ元気</button>
+      <button onclick="selectOption(2)">話す気分じゃないかも</button>
+    </div>
   </div>
-  <div class="choices">
-    <button onclick="showReaction('happy')">😊 うれしいことがあった</button>
-    <button onclick="showReaction('neutral')">😐 なんとなく、ぼんやり</button>
-    <button onclick="showReaction('tired')">😔 ちょっと疲れてるかも</button>
-  </div>
-  <div id="reaction" class="reaction" style="display:none;"></div>
-  <div class="badge" id="badge" style="display:none;">
-    <p>🎖️「感情に気づいたバッジ」GET！</p>
-  </div>
-
-  <script>
-    function showReaction(type) {
-      const reactionBox = document.getElementById('reaction');
-      const badgeBox = document.getElementById('badge');
-      let message = '';
-      switch(type) {
-        case 'happy':
-          message = 'うれしいって気持ち、ちゃんと感じられたんだね。すてきだよ 🌸';
-          break;
-        case 'neutral':
-          message = 'うんうん、そんな日もあるよね。ここで一休みしていって ☕';
-          break;
-        case 'tired':
-          message = 'そっかぁ…がんばってきたんだね。今日は、やさしくしてあげようね';
-          break;
-      }
-      reactionBox.innerText = message;
-      reactionBox.style.display = 'block';
-      badgeBox.style.display = 'block';
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
