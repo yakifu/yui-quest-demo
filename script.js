@@ -7,7 +7,7 @@ let currentStage = 0;
 
 const dialogue = [
   {
-    question: "こんにちは。今日はどんな気分？",
+    question: "",
     options: [
       {
         text: "ちょっとモヤモヤしてる",
@@ -69,10 +69,10 @@ const dialogue = [
 ];
 
 function getEmotionImage(text) {
-  if (text.match(/(モヤモヤ|疲れ|悩み|考え)/)) return "nono_thinking.png";
   if (text.match(/(眠|眠い|ぼんやり|うとうと)/)) return "nono_sleepy.png";
   if (text.match(/(驚き|びっくり|照れ|予想外)/)) return "nono_surprised.png";
   if (text.match(/(笑|嬉しい|楽しい)/)) return "nono_smile.png";
+  if (text.match(/(考え|悩み|わからない)/)) return "nono_thinking.png";
   if (text.match(/(モヤモヤ|疲れ)/)) return "nono_sad.png";
   if (text.match(/(元気|いいね|調子)/)) return "nono_happy.png";
   if (text.match(/(大丈夫|寄り添|気づける|思いやり)/)) return "nono_empathy.png";
@@ -82,12 +82,15 @@ function getEmotionImage(text) {
 
 function showQuestion(stage) {
   const data = dialogue[stage];
+  avatar.src = "nono.png"; // reset 表情
+
   if (data.question) {
     const questionBubble = document.createElement("div");
     questionBubble.className = "nono-bubble";
     questionBubble.textContent = data.question;
     chatLog.appendChild(questionBubble);
   }
+
   choices.innerHTML = "";
   data.options.forEach((opt, i) => {
     const btn = document.createElement("button");
@@ -116,7 +119,8 @@ function selectOption(index) {
   hint.textContent = selected.hint;
   chatLog.appendChild(hint);
 
-  avatar.src = getEmotionImage(selected.reply + selected.hint);
+  const newSrc = getEmotionImage(selected.reply + selected.hint);
+  avatar.src = newSrc;
 
   choices.style.display = "none";
   currentStage++;
