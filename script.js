@@ -68,12 +68,15 @@ const dialogue = [
   }
 ];
 
-// キーワードで感情に応じた画像を返す関数
 function getEmotionImage(text) {
-  if (text.includes("モヤモヤ") || text.includes("疲れ")) return "nono_sad.png";
-  if (text.includes("元気") || text.includes("いいね")) return "nono_happy.png";
-  if (text.includes("大丈夫") || text.includes("寄り添") || text.includes("気づける")) return "nono_empathy.png";
-  if (text.includes("泣") || text.includes("見つからない")) return "nono_cry.png";
+  if (text.match(/(モヤモヤ|疲れ|悩み|考え)/)) return "nono_thinking.png";
+  if (text.match(/(眠|眠い|ぼんやり|うとうと)/)) return "nono_sleepy.png";
+  if (text.match(/(驚き|びっくり|照れ|予想外)/)) return "nono_surprised.png";
+  if (text.match(/(笑|嬉しい|楽しい)/)) return "nono_smile.png";
+  if (text.match(/(モヤモヤ|疲れ)/)) return "nono_sad.png";
+  if (text.match(/(元気|いいね|調子)/)) return "nono_happy.png";
+  if (text.match(/(大丈夫|寄り添|気づける|思いやり)/)) return "nono_empathy.png";
+  if (text.match(/(泣|見つからない)/)) return "nono_cry.png";
   return "nono.png";
 }
 
